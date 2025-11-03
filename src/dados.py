@@ -4,7 +4,7 @@ import time
 # token de acesso pessoal do GitHub com permissões adequadas - Lucas 
 
 REPO = "shutterstock/rickshaw"  
-TOKEN = ""  
+TOKEN = "" # querido professor, você não vê o token de acesso pois é um dado sensivel, por isso toda vez que baixamos o código temos que inserir manualmente
 
 HEADERS = {
     "Authorization": f"token {TOKEN}",
@@ -56,3 +56,4 @@ def coletar_reviews(pr_number):
 def coletar_comentarios_pr(pr_number):
     url = f"https://api.github.com/repos/{REPO}/pulls/{pr_number}/comments?per_page=100"
     return get_paginated(url)
+

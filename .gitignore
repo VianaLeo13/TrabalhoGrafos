@@ -1,6 +1,3 @@
-# Diretório com dados coletados
-dados_coletados/
-
 # Arquivos Python
 __pycache__/
 *.py[cod]

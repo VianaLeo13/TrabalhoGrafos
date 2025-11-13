@@ -7,7 +7,7 @@ from typing import Dict, List, Optional
 
 # Configurações - Lucas
 REPO = "shutterstock/rickshaw"  
-TOKEN = "" # querido professor, você não vê o token de acesso pois é um dado sensivel, por isso toda vez que baixamos o código temos que inserir manualmente
+TOKEN = "" # Token removido por segurança - insira seu token aqui se precisar fazer nova coleta
 
 # Diretório para salvar os dados coletados
 DATA_DIR = "dados_coletados"

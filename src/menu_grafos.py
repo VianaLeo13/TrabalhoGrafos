@@ -9,6 +9,11 @@ import os
 import sys
 from CommentGraph import CommentGraph
 from IssueCloseGraph import IssueCloseGraph
+# Tenta importar a implementação específica por matriz (arquivo adicional)
+try:
+    from IssueCloseGraphMatrixAd import IssueCloseGraphyMatrixAd
+except Exception:
+    IssueCloseGraphyMatrixAd = None
 
 def limpar_tela():
     """Limpa a tela do terminal"""
@@ -115,7 +120,12 @@ def criar_grafo(tipo_grafo, usar_matriz):
             tipo_nome = "Comentários em Issues/PRs"
         else:
             print("📊 Criando Grafo de Fechamento de Issues...")
-            grafo = IssueCloseGraph(usar_matriz=usar_matriz)
+            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
+            # instanciamos `IssueCloseGraphyMatrixAd` (implementação específica por matriz).
+            if usar_matriz and IssueCloseGraphyMatrixAd is not None:
+                grafo = IssueCloseGraphyMatrixAd()
+            else:
+                grafo = IssueCloseGraph(usar_matriz=usar_matriz)
             tipo_nome = "Fechamento de Issues"
         
         impl_nome = "Matriz de Adjacência" if usar_matriz else "Lista de Adjacência"

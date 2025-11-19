@@ -9,12 +9,15 @@ from typing import Dict, List, Optional
 REPO = "shutterstock/rickshaw"  
 TOKEN = "" # Token removido por segurança - insira seu token aqui se precisar fazer nova coleta
 
-# Diretório para salvar os dados coletados
-DATA_DIR = "dados_coletados"
-OS_ISSUES_FILE = os.path.join(DATA_DIR, "issues.json")
-OS_PULLS_FILE = os.path.join(DATA_DIR, "pulls.json")
-OS_INTERACOES_FILE = os.path.join(DATA_DIR, "interacoes.json")
-OS_METADADOS_FILE = os.path.join(DATA_DIR, "metadados.json")
+# Diretório para salvar os dados coletados (path absoluto relativo a este arquivo)
+# Usa o diretório pai do pacote `src` para localizar `dados_coletados`, tornando o carregamento
+# independente do diretório de trabalho atual quando o script é executado.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.normpath(os.path.join(BASE_DIR, '..', 'dados_coletados'))
+OS_ISSUES_FILE = os.path.join(DATA_DIR, 'issues.json')
+OS_PULLS_FILE = os.path.join(DATA_DIR, 'pulls.json')
+OS_INTERACOES_FILE = os.path.join(DATA_DIR, 'interacoes.json')
+OS_METADADOS_FILE = os.path.join(DATA_DIR, 'metadados.json')
 
 HEADERS = {
     "Authorization": f"token {TOKEN}",

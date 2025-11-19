@@ -7,6 +7,7 @@ Permite escolher o tipo de grafo e a implementação desejada
 
 import os
 import sys
+import inspect
 from CommentGraph import CommentGraph
 from IssueCloseGraph import IssueCloseGraph
 from PullRequestReviewGraph import PullRequestReviewGraph
@@ -130,6 +131,33 @@ def obter_escolha_usuario(opcoes_validas):
         except Exception as e:
             print(f"❌ Erro: {e}")
 
+def _instanciar_grafo_classe(cls, usar_matriz):
+    """Tenta instanciar cls passando usar_matriz quando compatível."""
+    try:
+        sig = inspect.signature(cls.__init__)
+        params = list(sig.parameters.values())[1:]  # ignora self
+        # aceita **kwargs
+        if any(p.kind == inspect.Parameter.VAR_KEYWORD for p in params):
+            return cls(usar_matriz=usar_matriz)
+        names = [p.name for p in params if p.kind in (inspect.Parameter.POSITIONAL_ONLY, inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)]
+        if 'usar_matriz' in names:
+            return cls(usar_matriz=usar_matriz)
+        # se aceita um posicional, tentar passar como posicional
+        positional_params = [p for p in params if p.kind in (inspect.Parameter.POSITIONAL_ONLY, inspect.Parameter.POSITIONAL_OR_KEYWORD)]
+        if len(positional_params) >= 1:
+            try:
+                return cls(usar_matriz)
+            except TypeError:
+                pass
+        # fallback sem argumentos
+        return cls()
+    except Exception:
+        # fallback final: tentar chamadas comuns
+        try:
+            return cls(usar_matriz=usar_matriz)
+        except Exception:
+            return cls()
+
 def criar_grafo(tipo_grafo, usar_matriz):
     """Cria o grafo conforme as escolhas do usuário"""
     print("\n" + "⏳ " + "─" * 50)
@@ -139,39 +167,31 @@ def criar_grafo(tipo_grafo, usar_matriz):
     try:
         if tipo_grafo == 1:
             print("📊 Criando Grafo de Comentários...")
-            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
-            # instanciamos `CommentGraphMatrixAd` (implementação específica por matriz).
             if usar_matriz and CommentGraphMatrixAd is not None:
-                grafo = CommentGraphMatrixAd()
+                grafo = _instanciar_grafo_classe(CommentGraphMatrixAd, usar_matriz)
             else:
-                grafo = CommentGraph(usar_matriz=usar_matriz)
+                grafo = _instanciar_grafo_classe(CommentGraph, usar_matriz)
             tipo_nome = "Comentários em Issues/PRs"
         elif tipo_grafo == 2:
             print("📊 Criando Grafo de Fechamento de Issues...")
-            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
-            # instanciamos `IssueCloseGraphyMatrixAd` (implementação específica por matriz).
             if usar_matriz and IssueCloseGraphyMatrixAd is not None:
-                grafo = IssueCloseGraphyMatrixAd()
+                grafo = _instanciar_grafo_classe(IssueCloseGraphyMatrixAd, usar_matriz)
             else:
-                grafo = IssueCloseGraph(usar_matriz=usar_matriz)
+                grafo = _instanciar_grafo_classe(IssueCloseGraph, usar_matriz)
             tipo_nome = "Fechamento de Issues"
         elif tipo_grafo == 3:
             print("📊 Criando Grafo de Revisões/Merges de PRs...")
-            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
-            # instanciamos `PullRequestReviewGraphMatrixAd` (implementação específica por matriz).
             if usar_matriz and PullRequestReviewGraphMatrixAd is not None:
-                grafo = PullRequestReviewGraphMatrixAd()
+                grafo = _instanciar_grafo_classe(PullRequestReviewGraphMatrixAd, usar_matriz)
             else:
-                grafo = PullRequestReviewGraph(usar_matriz=usar_matriz)
+                grafo = _instanciar_grafo_classe(PullRequestReviewGraph, usar_matriz)
             tipo_nome = "Revisões/Merges de PRs"
         else:  # tipo_grafo == 4
             print("📊 Criando Grafo Integrado (Ponderado)...")
-            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
-            # instanciamos `IntegratedGraphMatrixAd` (implementação específica por matriz).
             if usar_matriz and IntegratedGraphMatrixAd is not None:
-                grafo = IntegratedGraphMatrixAd()
+                grafo = _instanciar_grafo_classe(IntegratedGraphMatrixAd, usar_matriz)
             else:
-                grafo = IntegratedGraph(usar_matriz=usar_matriz)
+                grafo = _instanciar_grafo_classe(IntegratedGraph, usar_matriz)
             tipo_nome = "Grafo Integrado (Ponderado)"
         
         impl_nome = "Matriz de Adjacência" if usar_matriz else "Lista de Adjacência"

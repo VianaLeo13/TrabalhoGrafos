@@ -1,4 +1,5 @@
 from AdjacencyListGraph import AdjacencyListGraph
+from AdjacencyMatrixGraph import AdjacencyMatrixGraph
 from dados import carregar_dados_coletados
 
 class CommentGraph:
@@ -10,11 +11,15 @@ class CommentGraph:
     O grafo é simples e direcionado.
     """
     
-    def __init__(self):
+    def __init__(self, usar_matriz=False):
         """
         Construtor do grafo de comentários.
         Carrega os dados coletados e constrói o grafo.
+        
+        Args:
+            usar_matriz: Se True, usa AdjacencyMatrixGraph; se False, usa AdjacencyListGraph
         """
+        self.usar_matriz = usar_matriz
         self.dados = carregar_dados_coletados()
         self.usuarios = {}  # Mapear usuário -> índice do vértice
         self.usuarios_reverso = {}  # Mapear índice -> usuário
@@ -94,12 +99,17 @@ class CommentGraph:
             return
         
         # Cria o grafo com o número de usuários
-        self.grafo = AdjacencyListGraph(num_usuarios)
+        if self.usar_matriz:
+            self.grafo = AdjacencyMatrixGraph(num_usuarios)
+            print(f"🔢 Usando Matriz de Adjacência com {num_usuarios} usuários")
+        else:
+            self.grafo = AdjacencyListGraph(num_usuarios)
+            print(f"📋 Usando Lista de Adjacência com {num_usuarios} usuários")
         
         # Adiciona arestas baseadas nos comentários
         self._adicionar_arestas_comentarios()
         
-        print(f"Grafo construído com {self.grafo.getVertexCount()} vértices e {self.grafo.getEdgeCount()} arestas")
+        print(f"✅ Grafo construído com {self.grafo.getVertexCount()} vértices e {self.grafo.getEdgeCount()} arestas")
     
     def _adicionar_arestas_comentarios(self):
         """

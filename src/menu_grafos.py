@@ -9,11 +9,28 @@ import os
 import sys
 from CommentGraph import CommentGraph
 from IssueCloseGraph import IssueCloseGraph
-# Tenta importar a implementação específica por matriz (arquivo adicional)
+from PullRequestReviewGraph import PullRequestReviewGraph
+from IntegratedGraph import IntegratedGraph
+# Tenta importar as implementações específicas por matriz (arquivos adicionais)
 try:
     from IssueCloseGraphMatrixAd import IssueCloseGraphyMatrixAd
 except Exception:
     IssueCloseGraphyMatrixAd = None
+
+try:
+    from CommentGraphMatrixAd import CommentGraphMatrixAd
+except Exception:
+    CommentGraphMatrixAd = None
+
+try:
+    from PullRequestReviewGraphMatrixAd import PullRequestReviewGraphMatrixAd
+except Exception:
+    PullRequestReviewGraphMatrixAd = None
+
+try:
+    from IntegratedGraphMatrixAd import IntegratedGraphMatrixAd
+except Exception:
+    IntegratedGraphMatrixAd = None
 
 def limpar_tela():
     """Limpa a tela do terminal"""
@@ -38,6 +55,12 @@ def exibir_menu_principal():
     print("│                                                         │")
     print("│  2️⃣  Grafo de Fechamento de Issues                      │")
     print("│      🔒 Usuários que fecham issues de outros           │")
+    print("│                                                         │")
+    print("│  3️⃣  Grafo de Revisões/Merges de PRs                   │")
+    print("│      🔍 Usuários que revisam/fazem merge de PRs        │")
+    print("│                                                         │")
+    print("│  4️⃣  Grafo Integrado (Ponderado)                       │")
+    print("│      ⚖️  Todas as interações com pesos combinados      │")
     print("│                                                         │")
     print("│  0️⃣  Sair do programa                                   │")
     print("│                                                         │")
@@ -116,9 +139,14 @@ def criar_grafo(tipo_grafo, usar_matriz):
     try:
         if tipo_grafo == 1:
             print("📊 Criando Grafo de Comentários...")
-            grafo = CommentGraph(usar_matriz=usar_matriz)
+            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
+            # instanciamos `CommentGraphMatrixAd` (implementação específica por matriz).
+            if usar_matriz and CommentGraphMatrixAd is not None:
+                grafo = CommentGraphMatrixAd()
+            else:
+                grafo = CommentGraph(usar_matriz=usar_matriz)
             tipo_nome = "Comentários em Issues/PRs"
-        else:
+        elif tipo_grafo == 2:
             print("📊 Criando Grafo de Fechamento de Issues...")
             # Se o usuário escolheu matriz e a implementação separada estiver disponível,
             # instanciamos `IssueCloseGraphyMatrixAd` (implementação específica por matriz).
@@ -127,6 +155,24 @@ def criar_grafo(tipo_grafo, usar_matriz):
             else:
                 grafo = IssueCloseGraph(usar_matriz=usar_matriz)
             tipo_nome = "Fechamento de Issues"
+        elif tipo_grafo == 3:
+            print("📊 Criando Grafo de Revisões/Merges de PRs...")
+            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
+            # instanciamos `PullRequestReviewGraphMatrixAd` (implementação específica por matriz).
+            if usar_matriz and PullRequestReviewGraphMatrixAd is not None:
+                grafo = PullRequestReviewGraphMatrixAd()
+            else:
+                grafo = PullRequestReviewGraph(usar_matriz=usar_matriz)
+            tipo_nome = "Revisões/Merges de PRs"
+        else:  # tipo_grafo == 4
+            print("📊 Criando Grafo Integrado (Ponderado)...")
+            # Se o usuário escolheu matriz e a implementação separada estiver disponível,
+            # instanciamos `IntegratedGraphMatrixAd` (implementação específica por matriz).
+            if usar_matriz and IntegratedGraphMatrixAd is not None:
+                grafo = IntegratedGraphMatrixAd()
+            else:
+                grafo = IntegratedGraph(usar_matriz=usar_matriz)
+            tipo_nome = "Grafo Integrado (Ponderado)"
         
         impl_nome = "Matriz de Adjacência" if usar_matriz else "Lista de Adjacência"
         
@@ -163,7 +209,11 @@ def mostrar_amostra_arestas(grafo):
     print("═" * 52)
     
     try:
-        grafo.imprimir_amostra_arestas(10)
+        # Se o grafo tem função para mostrar pesos, usa ela
+        if hasattr(grafo, 'imprimir_amostra_arestas_com_pesos'):
+            grafo.imprimir_amostra_arestas_com_pesos(10)
+        else:
+            grafo.imprimir_amostra_arestas(10)
     except Exception as e:
         print(f"❌ Erro ao exibir amostra: {e}")
     
@@ -210,7 +260,7 @@ def menu_principal():
         exibir_cabecalho()
         exibir_menu_principal()
         
-        escolha_tipo = obter_escolha_usuario([0, 1, 2])
+        escolha_tipo = obter_escolha_usuario([0, 1, 2, 3, 4])
         
         if escolha_tipo == 0:
             print("\n👋 Obrigado por usar o Analisador de Grafos!")
@@ -221,7 +271,8 @@ def menu_principal():
         while True:
             limpar_tela()
             exibir_cabecalho()
-            print("🔸 Grafo selecionado:", "Comentários" if escolha_tipo == 1 else "Fechamento de Issues")
+            grafo_nomes = {1: "Comentários", 2: "Fechamento de Issues", 3: "Revisões/Merges de PRs", 4: "Grafo Integrado"}
+            print("🔸 Grafo selecionado:", grafo_nomes.get(escolha_tipo, "Desconhecido"))
             print()
             exibir_menu_implementacao()
             

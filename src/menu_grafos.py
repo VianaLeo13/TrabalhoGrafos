@@ -9,11 +9,17 @@ import os
 import sys
 from CommentGraph import CommentGraph
 from IssueCloseGraph import IssueCloseGraph
-# Tenta importar a implementação específica por matriz (arquivo adicional)
+from PullRequestGraph import PullRequestGraph
+# Tenta importar implementações específicas por matriz (se existirem)
 try:
     from IssueCloseGraphMatrixAd import IssueCloseGraphyMatrixAd
 except Exception:
     IssueCloseGraphyMatrixAd = None
+
+try:
+    from PullRequestGraphMatrixAd import PullRequestGraphMatrixAd
+except Exception:
+    PullRequestGraphMatrixAd = None
 
 def limpar_tela():
     """Limpa a tela do terminal"""
@@ -38,6 +44,9 @@ def exibir_menu_principal():
     print("│                                                         │")
     print("│  2️⃣  Grafo de Fechamento de Issues                      │")
     print("│      🔒 Usuários que fecham issues de outros           │")
+    print("│                                                         │")
+    print("│  3️⃣  Grafo de Pull Requests (reviews / merges)         │")
+    print("│      🔁 Revisões, aprovações e merges de PRs           │")
     print("│                                                         │")
     print("│  0️⃣  Sair do programa                                   │")
     print("│                                                         │")
@@ -118,7 +127,7 @@ def criar_grafo(tipo_grafo, usar_matriz):
             print("📊 Criando Grafo de Comentários...")
             grafo = CommentGraph(usar_matriz=usar_matriz)
             tipo_nome = "Comentários em Issues/PRs"
-        else:
+        elif tipo_grafo == 2:
             print("📊 Criando Grafo de Fechamento de Issues...")
             # Se o usuário escolheu matriz e a implementação separada estiver disponível,
             # instanciamos `IssueCloseGraphyMatrixAd` (implementação específica por matriz).
@@ -127,6 +136,13 @@ def criar_grafo(tipo_grafo, usar_matriz):
             else:
                 grafo = IssueCloseGraph(usar_matriz=usar_matriz)
             tipo_nome = "Fechamento de Issues"
+        else:
+            print("📊 Criando Grafo de Pull Requests (reviews/merges)...")
+            if usar_matriz and PullRequestGraphMatrixAd is not None:
+                grafo = PullRequestGraphMatrixAd()
+            else:
+                grafo = PullRequestGraph(usar_matriz=usar_matriz)
+            tipo_nome = "Pull Requests (reviews/merges)"
         
         impl_nome = "Matriz de Adjacência" if usar_matriz else "Lista de Adjacência"
         
@@ -210,7 +226,7 @@ def menu_principal():
         exibir_cabecalho()
         exibir_menu_principal()
         
-        escolha_tipo = obter_escolha_usuario([0, 1, 2])
+        escolha_tipo = obter_escolha_usuario([0, 1, 2, 3])
         
         if escolha_tipo == 0:
             print("\n👋 Obrigado por usar o Analisador de Grafos!")
@@ -221,7 +237,14 @@ def menu_principal():
         while True:
             limpar_tela()
             exibir_cabecalho()
-            print("🔸 Grafo selecionado:", "Comentários" if escolha_tipo == 1 else "Fechamento de Issues")
+            tipo_nome_preview = ""
+            if escolha_tipo == 1:
+                tipo_nome_preview = "Comentários"
+            elif escolha_tipo == 2:
+                tipo_nome_preview = "Fechamento de Issues"
+            elif escolha_tipo == 3:
+                tipo_nome_preview = "Pull Requests (reviews/merges)"
+            print("🔸 Grafo selecionado:", tipo_nome_preview)
             print()
             exibir_menu_implementacao()
             

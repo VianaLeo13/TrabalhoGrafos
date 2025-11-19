@@ -7,7 +7,8 @@ from typing import Dict, List, Optional
 
 # Configurações - Lucas
 REPO = "shutterstock/rickshaw"  
-TOKEN = "" # Token removido por segurança - insira seu token aqui se precisar fazer nova coleta
+TOKEN = ""  # Defina seu token localmente ou via variável de ambiente quando necessário
+ # Token removido por segurança. Não deixe tokens em commits públicos.
 
 # Diretório para salvar os dados coletados (path absoluto relativo a este arquivo)
 # Usa o diretório pai do pacote `src` para localizar `dados_coletados`, tornando o carregamento
@@ -155,6 +156,29 @@ def coletar_comentarios_pr(pr_number: int) -> List[Dict]:
     url = f"https://api.github.com/repos/{REPO}/pulls/{pr_number}/comments?per_page=100"
     return get_paginated(url)
 
+
+# Pega detalhes completos de um pull request (inclui campos como `merged`, `merged_by`, `merged_at`)
+def coletar_pull_detalhes(pr_number: int) -> Dict:
+    """
+    Coleta os detalhes completos de um pull request específico.
+
+    Args:
+        pr_number: Número do pull request
+
+    Returns:
+        Dicionário com os dados do pull request (ou um dicionário vazio em caso de erro)
+    """
+    url = f"https://api.github.com/repos/{REPO}/pulls/{pr_number}"
+    try:
+        r = requests.get(url, headers=HEADERS)
+        if r.status_code != 200:
+            print(f"Erro {r.status_code} ao buscar detalhes do PR {pr_number}: {r.text}")
+            return {}
+        return r.json()
+    except Exception as e:
+        print(f"Erro ao coletar detalhes do PR {pr_number}: {e}")
+        return {}
+
 # Extrai informações relevantes de uma issue para análise de grafos
 def processar_issue(issue: Dict) -> Dict:
     """
@@ -181,34 +205,38 @@ def processar_issue(issue: Dict) -> Dict:
     return dados_processados
 
 # Extrai informações relevantes de um pull request para análise de grafos
-def processar_pull_request(pull: Dict) -> Dict:
+def processar_pull_request(pull: Dict, detalhes: Optional[Dict] = None) -> Dict:
     """
     Processa um pull request e extrai informações relevantes para construção do grafo.
-    
+
     Args:
-        pull: Dados do pull request da API do GitHub
-        
+        pull: Dados do pull request (lista) da API do GitHub
+        detalhes: Dados completos do pull request (obtidos por `/pulls/{number}`), opcional
+
     Returns:
         Dicionário com informações processadas do pull request
     """
+    # Use detalhes completos se fornecidos, caso contrário caia de volta para o objeto 'pull'
+    fonte = detalhes if detalhes else pull
+
     dados_processados = {
-        "numero": pull.get("number"),
-        "titulo": pull.get("title"),
-        "autor": pull.get("user", {}).get("login") if pull.get("user") else None,
-        "estado": pull.get("state"),
-        "merged": pull.get("merged"),
-        "merged_by": pull.get("merged_by", {}).get("login") if pull.get("merged_by") else None,
-        "mergeable": pull.get("mergeable"),
-        "data_criacao": pull.get("created_at"),
-        "data_fechamento": pull.get("closed_at"),
-        "data_merge": pull.get("merged_at"),
-        "url": pull.get("url"),
-        "html_url": pull.get("html_url")
+        "numero": fonte.get("number"),
+        "titulo": fonte.get("title"),
+        "autor": fonte.get("user", {}).get("login") if fonte.get("user") else None,
+        "estado": fonte.get("state"),
+        "merged": fonte.get("merged"),
+        "merged_by": fonte.get("merged_by", {}).get("login") if fonte.get("merged_by") else None,
+        "mergeable": fonte.get("mergeable"),
+        "data_criacao": fonte.get("created_at"),
+        "data_fechamento": fonte.get("closed_at"),
+        "data_merge": fonte.get("merged_at"),
+        "url": fonte.get("url"),
+        "html_url": fonte.get("html_url")
     }
     return dados_processados
 
 # Coleta e processa todas as interações do repositório
-def coletar_todas_interacoes(issues: List[Dict], pulls: List[Dict]) -> Dict:
+def coletar_todas_interacoes(issues: List[Dict], pulls: List[Dict], pulls_detalhes: Optional[Dict] = None) -> Dict:
     """
     Coleta todas as interações (comentários, reviews, fechamentos, merges) do repositório.
     
@@ -276,7 +304,14 @@ def coletar_todas_interacoes(issues: List[Dict], pulls: List[Dict]) -> Dict:
         
         pr_num = pull.get("number")
         autor_pr = pull.get("user", {}).get("login") if pull.get("user") else None
-        
+
+        # Tenta obter detalhes completos do PR a partir do mapa fornecido; se não houver, faz a requisição
+        detalhes = None
+        if pulls_detalhes and pr_num in pulls_detalhes:
+            detalhes = pulls_detalhes.get(pr_num, {})
+        else:
+            detalhes = coletar_pull_detalhes(pr_num)
+
         # Coleta comentários gerais na conversa do PR (usando endpoint de issues, pois PRs são issues)
         comentarios_conversa = coletar_comentarios_issue(pr_num)
         for comentario in comentarios_conversa:
@@ -321,14 +356,25 @@ def coletar_todas_interacoes(issues: List[Dict], pulls: List[Dict]) -> Dict:
                     "peso": 4
                 })
         
-        # Verifica merge do pull request
-        merged_by = pull.get("merged_by", {}).get("login") if pull.get("merged_by") else None
-        if pull.get("merged") and merged_by and merged_by != autor_pr:
+        # Verifica merge do pull request (use detalhes completos quando disponíveis)
+        merged = None
+        merged_by = None
+        data_merge = None
+        if detalhes:
+            merged = detalhes.get("merged")
+            merged_by = detalhes.get("merged_by", {}).get("login") if detalhes.get("merged_by") else None
+            data_merge = detalhes.get("merged_at")
+        else:
+            merged = pull.get("merged")
+            merged_by = pull.get("merged_by", {}).get("login") if pull.get("merged_by") else None
+            data_merge = pull.get("merged_at")
+
+        if merged and merged_by and merged_by != autor_pr:
             interacoes["merges_pulls"].append({
                 "pr_numero": pr_num,
                 "autor_pr": autor_pr,
                 "merged_by": merged_by,
-                "data_merge": pull.get("merged_at"),
+                "data_merge": data_merge,
                 "tipo": "merge_pr",
                 "peso": 5
             })
@@ -355,13 +401,27 @@ def executar_coleta_completa():
         # Coleta issues e pull requests
         issues = coletar_issues()
         pulls = coletar_pulls()
-        
-        # Processa issues e pulls para extrair informações relevantes
+
+        # Processa issues para extrair informações relevantes
         issues_processadas = [processar_issue(issue) for issue in issues]
-        pulls_processados = [processar_pull_request(pull) for pull in pulls]
-        
-        # Coleta todas as interações
-        interacoes = coletar_todas_interacoes(issues, pulls)
+
+        # Para determinar corretamente 'merged' e 'merged_by' precisamos dos detalhes de cada PR.
+        # Vamos buscar detalhes de cada PR (uma requisição por PR) e armazenar em um mapa.
+        print("Coletando detalhes completos de cada PR (pode demorar dependendo do número de PRs)...")
+        pulls_detalhes = {}
+        for idx, pr in enumerate(pulls, 1):
+            pr_num = pr.get("number")
+            if pr_num is None:
+                continue
+            if idx % 20 == 0:
+                print(f"  Buscando detalhes para PR {idx}/{len(pulls)} (número {pr_num})...")
+            pulls_detalhes[pr_num] = coletar_pull_detalhes(pr_num)
+
+        # Processa pulls utilizando os detalhes completos quando disponíveis
+        pulls_processados = [processar_pull_request(pull, pulls_detalhes.get(pull.get("number"))) for pull in pulls]
+
+        # Coleta todas as interações usando o mapa de detalhes para evitar buscas repetidas
+        interacoes = coletar_todas_interacoes(issues, pulls, pulls_detalhes)
         
         # Salva dados em arquivos JSON
         print("\nSalvando dados coletados...")

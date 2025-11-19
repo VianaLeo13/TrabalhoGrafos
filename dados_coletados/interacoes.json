@@ -9624,5 +9624,950 @@
       "peso": 3
     }
   ],
-  "merges_pulls": []
+  "merges_pulls": [
+    {
+      "pr_numero": 634,
+      "autor_pr": "timgates42",
+      "merged_by": "cesine",
+      "data_merge": "2024-11-19T16:02:39Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 633,
+      "autor_pr": "jsoref",
+      "merged_by": "cesine",
+      "data_merge": "2024-11-19T15:59:39Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 632,
+      "autor_pr": "plan-do-break-fix",
+      "merged_by": "cesine",
+      "data_merge": "2024-11-19T15:59:03Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 630,
+      "autor_pr": "timgates42",
+      "merged_by": "cesine",
+      "data_merge": "2020-05-09T21:31:16Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 625,
+      "autor_pr": "dependabot[bot]",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-29T01:15:50Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 624,
+      "autor_pr": "dependabot[bot]",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-29T01:04:11Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 620,
+      "autor_pr": "jfcoz",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-30T01:18:19Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 619,
+      "autor_pr": "zilioti",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-30T01:35:29Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 616,
+      "autor_pr": "conanza",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-30T01:35:29Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 613,
+      "autor_pr": "sebasmurphy",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-30T02:37:44Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 609,
+      "autor_pr": "Jack-Q",
+      "merged_by": "cesine",
+      "data_merge": "2018-03-11T14:48:07Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 607,
+      "autor_pr": "rndstr",
+      "merged_by": "cesine",
+      "data_merge": "2018-03-11T15:54:23Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 597,
+      "autor_pr": "conanza",
+      "merged_by": "RichardLitt",
+      "data_merge": "2017-09-02T19:38:26Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 585,
+      "autor_pr": "cesine",
+      "merged_by": "RichardLitt",
+      "data_merge": "2017-09-20T22:21:32Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 579,
+      "autor_pr": "Bhashit",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-26T06:22:11Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 568,
+      "autor_pr": "Bhashit",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-19T03:44:37Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 563,
+      "autor_pr": "Mokeponi",
+      "merged_by": "cesine",
+      "data_merge": "2017-04-25T12:49:00Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 562,
+      "autor_pr": "tamasgoga",
+      "merged_by": "cesine",
+      "data_merge": "2017-04-25T13:59:29Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 549,
+      "autor_pr": "roberttod",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-06T21:40:22Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 548,
+      "autor_pr": "doaboa",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-06T21:09:27Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 547,
+      "autor_pr": "mathiasrw",
+      "merged_by": "cesine",
+      "data_merge": "2016-09-10T21:59:45Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 541,
+      "autor_pr": "jay3686",
+      "merged_by": "cesine",
+      "data_merge": "2016-04-08T23:22:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 536,
+      "autor_pr": "cesine",
+      "merged_by": "jay3686",
+      "data_merge": "2016-03-26T01:06:50Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 535,
+      "autor_pr": "cesine",
+      "merged_by": "wilmoore",
+      "data_merge": "2016-03-25T21:55:35Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 534,
+      "autor_pr": "funvit",
+      "merged_by": "cjthompson",
+      "data_merge": "2016-03-25T21:47:20Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 530,
+      "autor_pr": "pablorsk",
+      "merged_by": "wilmoore",
+      "data_merge": "2016-03-25T21:45:04Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 528,
+      "autor_pr": "rbu",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-07T00:30:55Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 526,
+      "autor_pr": "mikeatlas",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-19T03:46:26Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 513,
+      "autor_pr": "mchataigner",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-06T21:07:15Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 512,
+      "autor_pr": "stuartnelson3",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-28T04:49:14Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 511,
+      "autor_pr": "michelle",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-19T04:22:44Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 507,
+      "autor_pr": "mostr",
+      "merged_by": "tlackemann",
+      "data_merge": "2016-04-08T21:59:52Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 505,
+      "autor_pr": "wallin",
+      "merged_by": "dchester",
+      "data_merge": "2015-01-10T18:24:28Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 503,
+      "autor_pr": "yoursvivek",
+      "merged_by": "tlackemann",
+      "data_merge": "2016-04-08T22:03:00Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 501,
+      "autor_pr": "eiriksm",
+      "merged_by": "dchester",
+      "data_merge": "2014-12-14T04:59:05Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 495,
+      "autor_pr": "gaganawhad",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-19T03:47:40Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 493,
+      "autor_pr": "GermanBluefox",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-19T03:48:39Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 490,
+      "autor_pr": "KATT",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-30T01:35:31Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 489,
+      "autor_pr": "KATT",
+      "merged_by": "cesine",
+      "data_merge": "2020-03-30T01:35:31Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 486,
+      "autor_pr": "hamx0r",
+      "merged_by": "jay3686",
+      "data_merge": "2016-03-25T21:52:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 485,
+      "autor_pr": "btashton",
+      "merged_by": "RichardLitt",
+      "data_merge": "2017-08-25T20:26:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 477,
+      "autor_pr": "andrecrt",
+      "merged_by": "cesine",
+      "data_merge": "2017-07-18T23:23:31Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 474,
+      "autor_pr": "nic335",
+      "merged_by": "wilmoore",
+      "data_merge": "2016-03-25T22:16:53Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 466,
+      "autor_pr": "mginnard",
+      "merged_by": "wilmoore",
+      "data_merge": "2016-03-25T22:20:57Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 454,
+      "autor_pr": "briandeheus",
+      "merged_by": "wilmoore",
+      "data_merge": "2016-03-25T22:24:37Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 446,
+      "autor_pr": "JoshSGman",
+      "merged_by": "dchester",
+      "data_merge": "2014-06-30T15:42:10Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 433,
+      "autor_pr": "msand",
+      "merged_by": "dchester",
+      "data_merge": "2014-05-30T17:35:07Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 420,
+      "autor_pr": "reustle",
+      "merged_by": "dchester",
+      "data_merge": "2014-04-02T22:53:19Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 415,
+      "autor_pr": "dwt",
+      "merged_by": "dchester",
+      "data_merge": "2014-04-02T02:22:22Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 401,
+      "autor_pr": "callumj",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-07T00:30:53Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 400,
+      "autor_pr": "rbu",
+      "merged_by": "dchester",
+      "data_merge": "2014-02-27T21:43:35Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 397,
+      "autor_pr": "glasnt",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-07T00:30:53Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 391,
+      "autor_pr": "luke3141",
+      "merged_by": "dchester",
+      "data_merge": "2014-03-07T18:50:55Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 390,
+      "autor_pr": "arunv",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-07T00:30:53Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 387,
+      "autor_pr": "rbu",
+      "merged_by": "dchester",
+      "data_merge": "2014-04-13T19:31:28Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 383,
+      "autor_pr": "mo",
+      "merged_by": "dchester",
+      "data_merge": "2014-01-24T16:29:33Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 381,
+      "autor_pr": "noahgibbs",
+      "merged_by": "cesine",
+      "data_merge": "2016-11-07T00:30:53Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 378,
+      "autor_pr": "dwt",
+      "merged_by": "dchester",
+      "data_merge": "2014-01-15T03:03:52Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 372,
+      "autor_pr": "deldrid1",
+      "merged_by": "dchester",
+      "data_merge": "2014-01-16T02:23:43Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 359,
+      "autor_pr": "dwt",
+      "merged_by": "dchester",
+      "data_merge": "2013-12-02T14:06:55Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 358,
+      "autor_pr": "dwt",
+      "merged_by": "dchester",
+      "data_merge": "2013-11-27T15:46:17Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 339,
+      "autor_pr": "rbu",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-20T01:46:20Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 334,
+      "autor_pr": "ghost",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-20T01:01:07Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 332,
+      "autor_pr": "ghost",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-22T13:42:54Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 331,
+      "autor_pr": "ghost",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-16T00:23:50Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 330,
+      "autor_pr": "ghost",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-15T21:02:56Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 324,
+      "autor_pr": "deatheragetr",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-03T15:29:58Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 312,
+      "autor_pr": "aw",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-03T00:14:07Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 310,
+      "autor_pr": "illusori",
+      "merged_by": "dchester",
+      "data_merge": "2013-10-03T01:34:10Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 301,
+      "autor_pr": "BorisKozo",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-11T14:19:47Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 299,
+      "autor_pr": "illusori",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-09T12:36:02Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 292,
+      "autor_pr": "illusori",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-03T22:39:08Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 291,
+      "autor_pr": "illusori",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-03T21:12:14Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 289,
+      "autor_pr": "zaghaghi",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-03T23:00:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 288,
+      "autor_pr": "gingerlime",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-04T01:11:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 287,
+      "autor_pr": "davidhc",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-03T22:24:12Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 284,
+      "autor_pr": "ebeal",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-03T21:36:03Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 281,
+      "autor_pr": "mauryquijada",
+      "merged_by": "dchester",
+      "data_merge": "2013-07-16T23:12:38Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 279,
+      "autor_pr": "maxrabin",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-04T15:58:20Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 274,
+      "autor_pr": "rojotek",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-03T18:31:16Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 271,
+      "autor_pr": "gregbacchus",
+      "merged_by": "dchester",
+      "data_merge": "2013-07-01T14:45:12Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 262,
+      "autor_pr": "rojotek",
+      "merged_by": "dchester",
+      "data_merge": "2013-06-14T01:53:32Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 261,
+      "autor_pr": "rojotek",
+      "merged_by": "dchester",
+      "data_merge": "2013-06-14T01:35:47Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 258,
+      "autor_pr": "unSinn",
+      "merged_by": "dchester",
+      "data_merge": "2013-06-07T13:13:02Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 253,
+      "autor_pr": "chrisirhc",
+      "merged_by": "dchester",
+      "data_merge": "2013-05-31T21:34:06Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 247,
+      "autor_pr": "diwu1989",
+      "merged_by": "dchester",
+      "data_merge": "2013-06-02T18:48:48Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 242,
+      "autor_pr": "diwu1989",
+      "merged_by": "dchester",
+      "data_merge": "2013-05-03T12:55:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 241,
+      "autor_pr": "mcandre",
+      "merged_by": "dchester",
+      "data_merge": "2013-05-03T18:15:08Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 239,
+      "autor_pr": "thomasyip",
+      "merged_by": "dchester",
+      "data_merge": "2013-08-04T22:28:47Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 238,
+      "autor_pr": "diwu1989",
+      "merged_by": "dchester",
+      "data_merge": "2013-05-03T18:11:58Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 222,
+      "autor_pr": "chrisirhc",
+      "merged_by": "dchester",
+      "data_merge": "2013-04-17T01:01:21Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 221,
+      "autor_pr": "diwu1989",
+      "merged_by": "dchester",
+      "data_merge": "2013-04-15T18:29:47Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 205,
+      "autor_pr": "alightgoesout",
+      "merged_by": "dchester",
+      "data_merge": "2013-03-02T22:02:15Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 204,
+      "autor_pr": "alightgoesout",
+      "merged_by": "dchester",
+      "data_merge": "2013-03-02T19:23:20Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 199,
+      "autor_pr": "kdiogenes",
+      "merged_by": "dchester",
+      "data_merge": "2013-03-03T00:24:00Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 189,
+      "autor_pr": "mmeisel",
+      "merged_by": "dchester",
+      "data_merge": "2013-03-02T20:04:18Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 176,
+      "autor_pr": "philwills",
+      "merged_by": "dchester",
+      "data_merge": "2013-01-03T23:52:15Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 160,
+      "autor_pr": "mikepb",
+      "merged_by": "dchester",
+      "data_merge": "2012-11-14T03:07:41Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 154,
+      "autor_pr": "thisisbrians",
+      "merged_by": "dchester",
+      "data_merge": "2012-11-10T23:36:34Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 152,
+      "autor_pr": "marcospri",
+      "merged_by": "dchester",
+      "data_merge": "2012-11-08T23:52:22Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 109,
+      "autor_pr": "rowanc",
+      "merged_by": "dchester",
+      "data_merge": "2012-08-30T22:14:22Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 106,
+      "autor_pr": "silas",
+      "merged_by": "dchester",
+      "data_merge": "2012-08-22T21:53:38Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 103,
+      "autor_pr": "bnorton",
+      "merged_by": "dchester",
+      "data_merge": "2012-08-14T12:54:05Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 102,
+      "autor_pr": "gt8073a",
+      "merged_by": "dchester",
+      "data_merge": "2012-08-26T01:22:54Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 97,
+      "autor_pr": "bnormoyle",
+      "merged_by": "dchester",
+      "data_merge": "2012-08-07T01:47:36Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 79,
+      "autor_pr": "classiemilio",
+      "merged_by": "cesine",
+      "data_merge": "2016-04-02T17:27:56Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 70,
+      "autor_pr": "travisbeck",
+      "merged_by": "dchester",
+      "data_merge": "2012-06-08T00:22:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 69,
+      "autor_pr": "travisbeck",
+      "merged_by": "dchester",
+      "data_merge": "2012-06-07T22:51:44Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 65,
+      "autor_pr": "muddydixon",
+      "merged_by": "cesine",
+      "data_merge": "2016-03-27T17:14:20Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 60,
+      "autor_pr": "acmurthy",
+      "merged_by": "dchester",
+      "data_merge": "2012-06-03T15:46:22Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 55,
+      "autor_pr": "tgolen",
+      "merged_by": "dchester",
+      "data_merge": "2012-05-30T13:21:18Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 32,
+      "autor_pr": "mthenw",
+      "merged_by": "dchester",
+      "data_merge": "2012-04-16T23:10:12Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 27,
+      "autor_pr": "kvisle",
+      "merged_by": "dchester",
+      "data_merge": "2012-03-20T21:52:04Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 26,
+      "autor_pr": "kyleconroy",
+      "merged_by": "dchester",
+      "data_merge": "2012-03-10T17:07:51Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 23,
+      "autor_pr": "bfolkens",
+      "merged_by": "dchester",
+      "data_merge": "2012-03-10T17:55:34Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 15,
+      "autor_pr": "bfolkens",
+      "merged_by": "dchester",
+      "data_merge": "2012-01-05T00:33:19Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 14,
+      "autor_pr": "travisbeck",
+      "merged_by": "dchester",
+      "data_merge": "2011-12-20T21:27:57Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    },
+    {
+      "pr_numero": 5,
+      "autor_pr": "bkovacevich",
+      "merged_by": "silas",
+      "data_merge": "2011-12-19T15:00:58Z",
+      "tipo": "merge_pr",
+      "peso": 5
+    }
+  ]
 }

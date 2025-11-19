@@ -1,8 +1,7 @@
-from AdjacencyListGraph import AdjacencyListGraph
-
+from AdjacencyMatrixGraph import AdjacencyMatrixGraph
 from dados import carregar_dados_coletados
 
-class CommentGraph:
+class CommentGraphMatrixAd:
     """
     Classe específica para modelar o Grafo 1: comentários em issues ou pull requests.
     
@@ -95,7 +94,7 @@ class CommentGraph:
             return
         
         # Cria o grafo com o número de usuários
-        self.grafo = AdjacencyListGraph(num_usuarios)
+        self.grafo = AdjacencyMatrixGraph(num_usuarios)
         
         # Adiciona arestas baseadas nos comentários
         self._adicionar_arestas_comentarios()
@@ -257,7 +256,7 @@ class CommentGraph:
             if count >= limite:
                 break
             
-            sucessores = self.grafo.getSuccessors(i)
+            sucessores =  [j for j in range(self.grafo.getVertexCount()) if j != i and self.grafo.hasEdge(i, j)]
             for j in sucessores:
                 if count >= limite:
                     break
@@ -353,7 +352,7 @@ def main():
     
     try:
         # Cria o grafo de comentários
-        comment_graph = CommentGraph()
+        comment_graph = CommentGraphMatrixAd()
         
         # Imprime estatísticas
         comment_graph.imprimir_estatisticas()
@@ -364,7 +363,7 @@ def main():
         # Exporta para GEPHI
         print("\n" + "=" * 50)
         print("Exportando grafo para visualização no GEPHI...")
-        comment_graph.exportToGEPHI("grafo_comentarios.gexf")
+        comment_graph.exportToGEPHI("grafo_comentarios_matrix_ad.gexf")
         
     except Exception as e:
         print(f"Erro ao criar grafo de comentários: {e}")

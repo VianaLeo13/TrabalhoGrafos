@@ -47,6 +47,20 @@ class AdjacencyMatrixGraph(AbstractGraph):
         self._validate_edge(u, v)
         return self._matrix[u][v]
     
+    def getSuccessors(self, u: int) -> list:
+        """
+        Retorna a lista de sucessores de u (vértices v tais que existe aresta u -> v).
+        """
+        self._validate_vertex(u)
+        return [v for v in range(self._num_vertices) if self._matrix[u][v]]
+    
+    def getPredecessors(self, u: int) -> list:
+        """
+        Retorna a lista de predecessores de u (vértices v tais que existe aresta v -> u).
+        """
+        self._validate_vertex(u)
+        return [v for v in range(self._num_vertices) if self._matrix[v][u]]
+    
     def addEdge(self, u: int, v: int) -> None:
         """
         Adiciona uma aresta entre os vértices u e v.
